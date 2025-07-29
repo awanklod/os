@@ -662,7 +662,7 @@ fi
 fi
 mesg n || true
 clear
-menu
+welcome
 END
 chmod 644 /root/.profile
 if [ -f "/root/log-install.txt" ]; then
