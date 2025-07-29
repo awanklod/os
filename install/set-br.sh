@@ -1,5 +1,5 @@
 #!/bin/bash
-REPO="https://v4.serverpremium.web.id:81/os/"
+REPO="https://raw.githubusercontent.com/awanklod/os/main/"
 apt install rclone
 printf "q\n" | rclone config
 wget -O /root/.config/rclone/rclone.conf "${REPO}install/rclone.conf"
