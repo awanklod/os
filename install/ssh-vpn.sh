@@ -7,8 +7,8 @@ apt dist-upgrade -y
 apt install netfilter-persistent -y
 apt-get remove --purge ufw firewalld -y
 apt install -y screen curl jq bzip2 gzip vnstat coreutils rsyslog iftop zip unzip git apt-transport-https build-essential -y
-REPO="https://v4.serverpremium.web.id:81/os/"
-REPO2="https://v4.serverpremium.web.id:81/os/"
+REPO="https://raw.githubusercontent.com/awanklod/os/main/"
+REPO2="https://raw.githubusercontent.com/awanklod/os/main/"
 # initializing var
 export DEBIAN_FRONTEND=noninteractive
 MYIP=$(wget -qO- ipinfo.io/ip)
@@ -245,7 +245,7 @@ fi
 
 # Unduh file konfigurasi HAProxy
 echo "Mengunduh file konfigurasi HAProxy..."
-wget -O /etc/haproxy/haproxy.cfg "https://v4.serverpremium.web.id:81/os/install/haproxy.cfg"
+wget -O /etc/haproxy/haproxy.cfg "https://raw.githubusercontent.com/awanklod/os/main/install/haproxy.cfg"
 
 # Reload daemon systemd
 echo "Memuat ulang daemon systemd..."
