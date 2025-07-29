@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Optimasi Speed By XWAN VPN 
+#Optimasi Speed By PREM 
 Add_To_New_Line(){
 	if [ "$(tail -n1 $1 | wc -l)" == "0"  ];then
 		echo "" >> "$1"
