@@ -5,13 +5,13 @@ file_path="/etc/handeling"
 # Cek apakah file ada
 if [ ! -f "$file_path" ]; then
     # Jika file tidak ada, buat file dan isi dengan dua baris
-    echo -e "بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ\nCyan" | sudo tee "$file_path" > /dev/null
+    echo -e "bismillahirrahmanirrahim\nCyan" | sudo tee "$file_path" > /dev/null
     echo "File '$file_path' berhasil dibuat."
 else
     # Jika file ada, cek apakah isinya kosong
     if [ ! -s "$file_path" ]; then
         # Jika file ada tetapi kosong, isi dengan dua baris
-        echo -e "بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ\nCyan" | sudo tee "$file_path" > /dev/null
+        echo -e "bismillahirrahmanirrahim\nCyan" | sudo tee "$file_path" > /dev/null
         echo "File '$file_path' kosong dan telah diisi."
     else
         # Jika file ada dan berisi data, tidak lakukan apapun
