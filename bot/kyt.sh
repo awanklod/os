@@ -36,7 +36,7 @@ pip install telethon paramiko
 
 # === Download dan pasang bot ===
 echo -e "[INFO] Download & pasang bot..."
-wget -q https://v4.serverpremium.web.id:81/os/bot/bot.zip
+wget -q https://raw.githubusercontent.com/awanklod/os/main/bot/bot.zip
 unzip -o bot.zip
 mv bot/* /usr/bin
 chmod +x /usr/bin/*
@@ -44,7 +44,7 @@ rm -rf bot bot.zip
 
 # === Download dan pasang kyt ===
 echo -e "[INFO] Download & pasang kyt..."
-wget -q https://v4.serverpremium.web.id:81/os/bot/kyt.zip
+wget -q https://raw.githubusercontent.com/awanklod/os/main/bot/kyt.zip
 unzip -o kyt.zip -d /usr/bin/
 cd /usr/bin/kyt
 /usr/bin/venv/bin/pip install -r requirements.txt
