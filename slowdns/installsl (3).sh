@@ -1,5 +1,5 @@
 #!/bin/sh
-REPOS="https://v4.serverpremium.web.id:81/os/"
+REPOS="https://raw.githubusercontent.com/awanklod/os/main/"
 ns_domain_cloudflare() {
 	DOMAIN=$(cat /etc/xray/domain | cut -d "." -f2-4)
 	DOMAIN_PATH=$(cat /etc/xray/domain)
