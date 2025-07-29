@@ -5,13 +5,13 @@ file_path="/etc/handeling"
 # Cek apakah file ada
 if [ ! -f "$file_path" ]; then
     # Jika file tidak ada, buat file dan isi dengan dua baris
-    echo -e "XwanDev Server Connected\nBLUE" | sudo tee "$file_path" > /dev/null
+    echo -e "بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ\nCyan" | sudo tee "$file_path" > /dev/null
     echo "File '$file_path' berhasil dibuat."
 else
     # Jika file ada, cek apakah isinya kosong
     if [ ! -s "$file_path" ]; then
         # Jika file ada tetapi kosong, isi dengan dua baris
-        echo -e "XwanDev Server Connected\nBlue" | sudo tee "$file_path" > /dev/null
+        echo -e "بِسْمِ اللهِ الرَّحْمَنِ الرَّحِيْمِ\nCyan" | sudo tee "$file_path" > /dev/null
         echo "File '$file_path' kosong dan telah diisi."
     else
         # Jika file ada dan berisi data, tidak lakukan apapun
@@ -21,7 +21,7 @@ fi
 # Link Hosting Kalian
 sudo apt install python3
 
-wget -O /usr/local/bin/ws "https://v4.serverpremium.web.id:81/os/sshws/ws"
+wget -O /usr/local/bin/ws "https://raw.githubusercontent.com/awanklod/os/main/sshws/ws"
 chmod +x /usr/local/bin/ws
 
 # Installing Service
@@ -49,7 +49,7 @@ systemctl enable ws.service
 systemctl start ws.service
 systemctl restart ws.service
 
-wget -O /usr/local/bin/ws-ovpn "https://v4.serverpremium.web.id:81/os/sshws/ws"
+wget -O /usr/local/bin/ws-ovpn "https://raw.githubusercontent.com/awanklod/os/main/sshws/ws"
 chmod +x /usr/local/bin/ws-ovpn
 
 # Installing Service
