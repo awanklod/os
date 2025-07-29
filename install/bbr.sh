@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#Optimasi Speed By PREM 
+#Optimasi Speed v 
 Add_To_New_Line(){
 	if [ "$(tail -n1 $1 | wc -l)" == "0"  ];then
 		echo "" >> "$1"
@@ -16,7 +16,7 @@ Check_And_Add_Line(){
 
 Install_BBR(){
 echo "#############################################"
-echo "Install TCP_BBR BY XWAN STORE..."
+echo "Install TCP_BBR BY PIAN STORE..."
 if [ -n "$(lsmod | grep bbr)" ];then
 echo "TCP_BBR sudah diinstall."
 echo "#############################################"
