@@ -459,18 +459,13 @@ wget ${REPO}install/udp-custom.sh && chmod +x udp-custom.sh && bash udp-custom.s
 clear
 }
 res10() {
-wget https://raw.githubusercontent.com/sehuadri/os/main/noobz/noobzvpns.zip
+wget https://raw.githubusercontent.com/awanklod/os/main/noobz/noobzvpns.zip
 unzip noobzvpns.zip
 chmod +x noobzvpns/*
 cd noobzvpns
 bash install.sh
 rm -rf noobzvpns
 systemctl restart noobzvpns
-clear
-}
-res11() {
-apt install dos2unix
-wget ${REPO}api.sh && chmod +x api.sh && dos2unix api.sh && bash api.sh
 clear
 }
 if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
