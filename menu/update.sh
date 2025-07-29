@@ -28,8 +28,8 @@ TIME="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
 domain=$(cat /etc/xray/domain)
 MYIP=$(curl -sS ipv4.icanhazip.com)
-username=$(curl -sS https://raw.githubusercontent.com/myridwan/izinvps/ipuk/ipx | grep $MYIP | awk '{print $2}')
-valid=$(curl -sS https://raw.githubusercontent.com/myridwan/izinvps/ipuk/ipx | grep $MYIP | awk '{print $3}')
+username=$(curl -sS https://raw.githubusercontent.com/awanklod/izin_jual/main/ip | grep $MYIP | awk '{print $2}')
+valid=$(curl -sS https://raw.githubusercontent.com/awanklod/izin_jual/main/ip | grep $MYIP | awk '{print $3}')
 today=$(date +"%Y-%m-%d")
 d1=$(date -d "$valid" +%s)
 d2=$(date -d "$today" +%s)
@@ -40,7 +40,7 @@ dateFromServer=$(curl -v --insecure --silent https://google.com/ 2>&1 | grep Dat
 biji=$(date +"%Y-%m-%d" -d "$dateFromServer")
 
 # URL repository
-REPO="https://v4.serverpremium.web.id:81/os/"
+REPO="https://raw.githubusercontent.com/awanklod/os/main/"
 pwadm="@Ridwan112#"
 # Download file dan proses
 
