@@ -11,7 +11,7 @@ CYAN='\033[0;36m'
 LIGHT='\033[0;37m'
 # ==========================================
 # Getting
-REPO="https://v4.serverpremium.web.id:81/os/"
+REPO="https://raw.githubusercontent.com/awanklod/os/main/"
 echo -e "
 "
 date
