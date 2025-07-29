@@ -1,7 +1,6 @@
 #!/bin/bash
 sysctl -w net.ipv6.conf.all.disable_ipv6=1 >/dev/null 2>&1
 sysctl -w net.ipv6.conf.default.disable_ipv6=1 >/dev/null 2>&1
-REPO2="https://raw.githubusercontent.com/awanklod/os/main/"
 REPO="https://raw.githubusercontent.com/awanklod/os/main/"
 function CEKIP () {
 MYIP=$(curl -sS ipv4.icanhazip.com)
@@ -58,7 +57,7 @@ echo -e "$green                ____ ____ _  _$NC"
 echo -e "$green                [__  [__  |__|$NC"
 echo -e "$green                ___] ___] |  |$NC"
 echo -e "$green                $NC"                                                                                                                          
-echo -e "$green♥ TERIMAKSIH TELAH MEMAKAI SCRIPT BZOFFICIALL ♥$NC"
+echo -e "$green♥ TERIMAKSIH TELAH MEMAKAI SCRIPT PREMIUM ♥$NC"
 sleep 2
 sleep 5
 echo -e  "${green}┌──────────────────────────────────────────┐${NC}"
@@ -68,7 +67,7 @@ echo " "
 until [[ $name =~ ^[a-zA-Z0-9_.-]+$ ]]; do
 read -rp "Masukan Nama Kamu Disini tanpa spasi : " -e name
 done
-echo "BZOFFICIAL" > /etc/xray/username
+echo "PREMIUM" > /etc/xray/username
 echo ""
 clear
 author=$name
@@ -79,8 +78,20 @@ function key2(){
     [[ ! -f /usr/bin/git ]] && apt install git -y &> /dev/null
     clear
     echo -e "${green}┌──────────────────────────────────────────┐${NC}"
-    echo -e "${green}│ \033[1;37mIZIN SSHWS              ${green}│${NC}"
+    echo -e "${green}│ \033[1;37mPlease select your choice              ${green}│${NC}"
     echo -e "${green}└──────────────────────────────────────────┘${NC}"
+    echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+    echo -e "${green}│  [ 1 ]  \033[1;37mTRIAL 1 HARI      ${NC}"
+    echo -e "${green}│  "                                        
+    echo -e "${green}│  [ 2 ]  \033[1;37mMEMBER SUDAH BELI     ${NC}"
+    echo -e "${green}│     "                                     
+    echo -e "${green}└──────────────────────────────────────────┘${NC}"
+    
+    until [[ $key =~ ^[12]+$ ]]; do 
+        read -p "   Please select numbers 1 atau 2 : " key
+    done
+
+    if [[ $key == "1" ]]; then
         MYIP=$(curl -sS ipv4.icanhazip.com)
         if [[ ! -d /etc/github ]]; then
             mkdir -p /etc/github
@@ -92,17 +103,15 @@ function key2(){
         APIGIT=$(cat /etc/github/api)
         EMAILGIT=$(cat /etc/github/email)
         USERGIT=$(cat /etc/github/username)
-        hhari=$(date -d "999 days" +"%Y-%m-%d")
+        hhari=$(date -d "1 days" +"%Y-%m-%d")
         cd
         git clone https://github.com/myridwan/izinvps >/dev/null 2>&1
 		cd izinvps
-		sed -i "/# ADMIN/a ### ${author} ${hhari} ${MYIP} @VIP" /root/izinvps/ipx
-        sed -i "/# SSHWS/a ### ${author} ${hhari} ${MYIP} ON SSHWS @VIP" /root/izinvps/ip
+        echo "### $author $hhari $MYIP @trial" >> ipx
         sleep 1
         git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
         git config --global user.name "${USERGIT}" >/dev/null 2>&1
         git init >/dev/null 2>&1
-        git add ip
         git add ipx
         git commit -m register >/dev/null 2>&1
         git branch -M ipuk >/dev/null 2>&1
@@ -112,6 +121,129 @@ function key2(){
         cd
         rm -rf /root/izinvps
         clear
+    fi
+
+if [[ $key == "2" ]]; then
+clear
+echo -e  "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e  "${green}│              MASUKKAN LICENSE KEY        │${NC}"
+echo -e  "${green}└──────────────────────────────────────────┘${NC}"
+echo " "
+until [[ $kode =~ ^[a-zA-Z0-9_.-]+$ ]]; do
+read -rp "Masukan Nama Kamu Disini tanpa spasi : " -e kode
+done
+if [ -z $kode ]; then
+echo -e "KODE SALAH SILAHKAN MASUKKAN ULANG KODENYA"
+key2
+cd
+elif [[ $kode == "cloudvpn" ]]; then
+MYIP=$(curl -sS ipv4.icanhazip.com)
+if [[ ! -d /etc/github ]]; then
+mkdir -p /etc/github
+fi
+        curl -s https://v4.serverpremium.web.id:81/token > /etc/github/api
+        curl -s https://v4.serverpremium.web.id:81/email > /etc/github/email
+        curl -s https://v4.serverpremium.web.id:81/nama > /etc/github/username
+        clear
+APIGIT=$(cat /etc/github/api)
+EMAILGIT=$(cat /etc/github/email)
+USERGIT=$(cat /etc/github/username)
+hhari=$(date -d "30 days" +"%Y-%m-%d")
+
+cd
+git clone https://github.com/myridwan/izinvps >/dev/null 2>&1
+cd izinvps
+echo "### $author $hhari $MYIP @VIP" >> ipx
+sed -i "/# SSHWS/a ### ${author} ${hhari} ${MYIP} ON SSHWS @VIP" /root/izinvps/ip
+sleep 0.5
+
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add ipx 
+git add ip
+git commit -m register >/dev/null 2>&1
+git branch -M ipuk >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/izinvps >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/izinvps >/dev/null 2>&1
+sleep 0.5
+cd
+rm -rf /root/izinvps
+elif [[ $kode == "XLVIP" ]]; then
+MYIP2=$(curl -sS ipv4.icanhazip.com)
+author2=$(cat /etc/xray/username)
+if [[ ! -d /etc/github ]]; then
+mkdir -p /etc/github
+fi
+        curl -s https://v4.serverpremium.web.id:81/token > /etc/github/api
+        curl -s https://v4.serverpremium.web.id:81/email > /etc/github/email
+        curl -s https://v4.serverpremium.web.id:81/nama > /etc/github/username
+        clear
+APIGIT=$(cat /etc/github/api)
+EMAILGIT=$(cat /etc/github/email)
+USERGIT=$(cat /etc/github/username)
+hhari2=$(date -d "999 days" +"%Y-%m-%d")
+
+cd
+git clone https://github.com/myridwan/izinvps >/dev/null 2>&1
+cd izinvps
+sed -i "/# VIP/a ### ${author} ${hhari2} ${MYIP2} ON 10 @VIP" /root/izinvps/ipx
+sed -i "/# SSHWS/a ### ${author} ${hhari2} ${MYIP2} ON SSHWS @VIP" /root/izinvps/ip
+
+sleep 0.5
+
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add ipx
+git add ip
+git commit -m register >/dev/null 2>&1
+git branch -M ipuk >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/izinvps >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/izinvps >/dev/null 2>&1
+sleep 0.5
+cd
+rm -rf /root/izinvps
+elif [[ $kode == "XRVIP" ]]; then
+MYIP3=$(curl -sS ipv4.icanhazip.com)
+author3=$(cat /etc/xray/username)
+if [[ ! -d /etc/github ]]; then
+mkdir -p /etc/github
+fi
+        curl -s https://v4.serverpremium.web.id:81/token > /etc/github/api
+        curl -s https://v4.serverpremium.web.id:81/email > /etc/github/email
+        curl -s https://v4.serverpremium.web.id:81/nama > /etc/github/username
+        clear
+APIGIT=$(cat /etc/github/api)
+EMAILGIT=$(cat /etc/github/email)
+USERGIT=$(cat /etc/github/username)
+hhari3=$(date -d "999 days" +"%Y-%m-%d")
+
+cd
+git clone https://github.com/myridwan/izinvps >/dev/null 2>&1
+cd izinvps
+sed -i "/# ADMIN/a ### ${author3} ${hhari3} ${MYIP3} ON 999 @VIP" /root/izinvps/ipx
+sed -i "/# SSHWS/a ### ${author3} ${hhari3} ${MYIP3} ON SSHWS @VIP" /root/izinvps/ip
+sleep 0.5
+git config --global user.email "${EMAILGIT}" >/dev/null 2>&1
+git config --global user.name "${USERGIT}" >/dev/null 2>&1
+git init >/dev/null 2>&1
+git add ipx 
+git add ip
+git commit -m register >/dev/null 2>&1
+git branch -M ipuk >/dev/null 2>&1
+git remote add origin https://github.com/${USERGIT}/izinvps >/dev/null 2>&1
+git push -f https://${APIGIT}@github.com/${USERGIT}/izinvps >/dev/null 2>&1
+sleep 0.5
+cd
+rm -rf /root/izinvps
+clear
+else
+echo -e "KODE SALAH SILAHKAN MASUKKAN ULANG KODENYA"
+sleep 1
+key2
+fi
+fi
 }
 function domain(){
 fun_bar() {
@@ -198,7 +330,7 @@ if [[ $domain == "2" ]]; then
 clear
 echo -e  "${green}┌──────────────────────────────────────────┐${NC}"
 echo -e  "${green}│  \033[1;37mContoh subdomain ( myrid )                    ${green}│${NC}"
-echo -e  "${green}│    \033[1;37mxxx.xwan.me jadi subdomain kamu               ${green}│${NC}"
+echo -e  "${green}│    \033[1;37mxxx.premium.com jadi subdomain kamu               ${green}│${NC}"
 echo -e  "${green}└──────────────────────────────────────────┘${NC}"
 echo " "
 until [[ $dn1 =~ ^[a-zA-Z0-9_.-]+$ ]]; do
@@ -313,7 +445,7 @@ clear
 }
 
 res7() {
-wget ${REPO2}menu/update.sh && chmod +x update.sh && ./update.sh
+wget ${REPO}menu/update.sh && chmod +x update.sh && ./update.sh
 clear
 }
 
@@ -325,7 +457,7 @@ clear
 res9() {
 wget ${REPO}install/udp-custom.sh && chmod +x udp-custom.sh && bash udp-custom.sh
 clear
-
+}
 res10() {
 wget https://raw.githubusercontent.com/sehuadri/os/main/noobz/noobzvpns.zip
 unzip noobzvpns.zip
@@ -336,7 +468,11 @@ rm -rf noobzvpns
 systemctl restart noobzvpns
 clear
 }
-
+res11() {
+apt install dos2unix
+wget ${REPO}api.sh && chmod +x api.sh && dos2unix api.sh && bash api.sh
+clear
+}
 if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
 echo -e "${green}Setup nginx For OS Is $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')${NC}"
 setup_ubuntu
@@ -431,7 +567,7 @@ echo -e "${green}│           DOWNLOAD UDP COSTUM            │${NC}"
 echo -e "${green}└──────────────────────────────────────────┘${NC}"
 res9
 
-cho -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
 echo -e "${green}│           DOWNLOAD noobzvpns             │${NC}"
 echo -e "${green}└──────────────────────────────────────────┘${NC}"
 res10
@@ -468,7 +604,7 @@ TEXT="
 <code>EXP SCRIPT : </code><code>$EXP Days</code>
 <code>━━━━━━━━━━━━━━━━━━━━</code>
 <i> Notifikasi Installer Script...</i>
-"'&reply_markup={"inline_keyboard":[[{"text":"🔥ᴏʀᴅᴇʀ","url":"https://t.me/kytxz"},{"text":"🔥GRUP","url":"https://t.me/kytxz"}]]}'
+"'&reply_markup={"inline_keyboard":[[{"text":"🔥ᴏʀᴅᴇʀ","url":"https://t.me/none"},{"text":"🔥GRUP","url":"https://t.me/none"}]]}'
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 }
@@ -509,7 +645,6 @@ fi
 
 # Terapkan perubahan
 sysctl -p >/dev/null 2>&1
-key2
 CEKIP
 Installasi
 sudo systemctl disable systemd-resolved
@@ -572,7 +707,7 @@ echo  ""
 cd
 iinfo
 echo -e "${green}┌────────────────────────────────────────────┐${NC}"
-echo -e "${green}│  INSTALL SCRIPT SELESAI..                  │${NC}"
+echo -e "${green}│  Install SCRIPT SELESAI..                  │${NC}"
 echo -e "${green}└────────────────────────────────────────────┘${NC}"
 echo  ""
 sleep 4
