@@ -1,5 +1,5 @@
 #!/bin/bash
-REPO="https://v4.serverpremium.web.id:81/os/"
+REPO="https://raw.githubusercontent.com/awanklod/os/main/"
 wget -q -O /usr/bin/limit-ip "${REPO}install/limit-ip"
 chmod +x /usr/bin/*
 cd /usr/bin
