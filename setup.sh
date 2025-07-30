@@ -303,7 +303,7 @@ fun_bar() {
     tput cnorm
 }
 res1() {
-wget https://raw.githubusercontent.com/awanklod/os/main/install/pointing.sh && chmod +x rmbl.sh && ./rmbl.sh
+wget https://raw.githubusercontent.com/awanklod/os/main/install/rmbl.sh && chmod +x rmbl.sh && ./rmbl.sh
 clear
 }
 res2() {
