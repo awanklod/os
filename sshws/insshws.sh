@@ -9,7 +9,7 @@ mkdir -p /etc/websocket
 
 repo="https://raw.githubusercontent.com/awanklod/os/main"
 
-wget -q -O /etc/websocket/ws.py "${repo}/ws/ws.py"
+wget -q -O /etc/websocket/ws.py "${repo}/sshws/ws.py"
 chmod +x /etc/websocket/ws.py
 
 # Installing Service
