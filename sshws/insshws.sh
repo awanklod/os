@@ -2,7 +2,7 @@
 # Link Hosting Kalian
 sudo apt install python3
 
-wget -O /usr/local/bin/ws "https://raw.githubusercontent.com/awanklod/os/main/sshws/ws"
+wget -O /usr/local/bin/ws "https://raw.githubusercontent.com/awanklod/os/main/sshws/ws.py"
 chmod +x /usr/local/bin/ws
 
 # Installing Service
@@ -30,7 +30,7 @@ systemctl enable ws.service
 systemctl start ws.service
 systemctl restart ws.service
 
-wget -O /usr/local/bin/ws-ovpn "https://raw.githubusercontent.com/awanklod/os/main/sshws/ws"
+wget -O /usr/local/bin/ws-ovpn "https://raw.githubusercontent.com/awanklod/os/main/sshws/ws.py"
 chmod +x /usr/local/bin/ws-ovpn
 
 # Installing Service
