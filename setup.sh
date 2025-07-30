@@ -951,17 +951,15 @@ cd
 curl -sS ifconfig.me > /etc/myipvps
 curl -s ipinfo.io/city?token=751274028fe3c0 >> /etc/xray/city
 curl -s ipinfo.io/org?token=751274028fe3c0  | cut -d " " -f 2-10 >> /etc/xray/isp
-rm /root/tools.sh >/dev/null 2>&1
-rm /root/install.sh >/dev/null 2>&1
-rm /root/rmbl1.sh >/dev/null 2>&1
+rm /root/setup.sh >/dev/null 2>&1
+rm /root/installsl.sh >/dev/null 2>&1
 rm /root/ssh-vpn.sh >/dev/null 2>&1
 rm /root/ins-xray.sh >/dev/null 2>&1
 rm /root/insshws.sh >/dev/null 2>&1
 rm /root/set-br.sh >/dev/null 2>&1
-rm /root/ohp.sh >/dev/null 2>&1
+#rm /root/ohp.sh >/dev/null 2>&1
 rm /root/update.sh >/dev/null 2>&1
-rm /root/installsl.sh >/dev/null 2>&1
-rm /root/udp-custom.sh >/dev/null 2>&1
+rm /root/tools.sh >/dev/null 2>&1
 rm -rf /etc/noobz
 mkdir -p /etc/noobz
 echo "" > /etc/xray/noob
