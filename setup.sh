@@ -49,32 +49,21 @@ mkdir -p /etc/xray
 mkdir -p /var/lib/ >/dev/null 2>&1
 echo "IP=" >> /var/lib/ipvps.conf
 clear
-echo -e "[ ${green}INFO${NC} ] Aight good ... installation file is ready"
-echo -e "$green                                                                                         $NC"
-echo -e "$green____ _  _ ___ ____    _ _  _ ____ ___ ____ _    _   $NC"
-echo -e "$green|__| |  |  |  |  |    | |\ | [__   |  |__| |    |   $NC"
-echo -e "$green|  | |__|  |  |__|    | | \| ___]  |  |  | |___ |___$NC"
-echo -e "$green                                                      $NC"                                     
-echo -e "$green                ____ ____ _  _$NC" 
-echo -e "$green                [__  [__  |__|$NC"
-echo -e "$green                ___] ___] |  |$NC"
-echo -e "$green                $NC"                                                                                                                          
-echo -e "$green♥ TERIMAKSIH TELAH MEMAKAI SCRIPT PREMIUM ♥$NC"
-sleep 2
-sleep 5
-echo -e  "${green}┌──────────────────────────────────────────┐${NC}"
-echo -e  "${green}│              MASUKKAN NAMA KAMU          │${NC}"
-echo -e  "${green}└──────────────────────────────────────────┘${NC}"
+echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
+echo -e "${BIBlue}│ ${BGCOLOR}             MASUKKAN NAMA KAMU         ${NC}${BIBlue} │${NC}"
+echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
 echo " "
 until [[ $name =~ ^[a-zA-Z0-9_.-]+$ ]]; do
 read -rp "Masukan Nama Kamu Disini tanpa spasi : " -e name
 done
-echo "PREMIUM" > /etc/xray/username
+rm -rf /etc/xray/username
+echo "$name" > /etc/xray/username
 echo ""
 clear
-author=$name
+author=$(cat /etc/xray/username)
 echo ""
 echo ""
+
 function key2(){
 clear
 echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
