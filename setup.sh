@@ -714,59 +714,105 @@ clear
 #clear
 #}
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}  PROCESS INSTALLED SSH & OVVPN         ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+}
+if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
+echo -e "${green}Setup nginx For OS Is $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')${NC}"
+setup_ubuntu
+elif [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "debian" ]]; then
+echo -e "${green}Setup nginx For OS Is $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')${NC}"
+setup_debian
+else
+echo -e " Your OS Is Not Supported ( ${YELLOW}$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')${FONT} )"
+fi
+}
+function setup_debian(){
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│      PROCESS INSTALLED SSH & OPENVPN     │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res2'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}       PROCESS INSTALLED XRAY           ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           PROCESS INSTALLED XRAY         │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res3'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}      PROCESS INSTALLED WEBSOCKET SSH   ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│       PROCESS INSTALLED WEBSOCKET SSH    │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res4'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}      PROCESS INSTALLED BACKUP MENU     ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│       PROCESS INSTALLED BACKUP MENU      │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res5'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}          PROCESS INSTALLED OHP         ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           PROCESS INSTALLED OHP          │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res6'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}          DOWNLOAD EXTRA MENU           ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD EXTRA MENU            │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res7'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}           DOWNLOAD SLOW DNS            ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD SYSTEM                │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res8'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}          DOWNLOAD UDP COSTUM           ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD UDP COSTUM            │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res9'
+}
+function setup_ubuntu(){
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│      PROCESS INSTALLED SSH & OPENVPN     │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res2
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED NOOBZVPNS         ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-fun_bar 'res10'
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           PROCESS INSTALLED XRAY         │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res3
 
-#echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-#echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED TOJAN-GO        ${NC}${BIBlue} │${NC}"
-#echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-#fun_bar 'res11'
-#echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-#echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED CRONTAB         ${NC}${BIBlue} │${NC}"
-#echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-#fun_bar 'res12'
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│       PROCESS INSTALLED WEBSOCKET SSH    │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res4
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│       PROCESS INSTALLED BACKUP MENU      │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res5
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           PROCESS INSTALLED OHP          │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res6
+
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD EXTRA MENU            │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res7
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD SYSTEM                │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res8
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD UDP COSTUM            │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res9
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD noobzvpns             │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res10
 }
 
 function iinfo(){
