@@ -906,16 +906,8 @@ fi
 #echo "*/5 * * * * root notramcpu" >> /etc/crontab
 #service cron restart
 #clear
-sysctl -p >/dev/null 2>&1
 CEKIP
 Casper3
-sudo systemctl disable systemd-resolved
-sudo systemctl stop systemd-resolved
-sudo rm /etc/resolv.config
-echo -e "nameserver 8.8.8.8\nnameserver 8.8.4.4" | sudo tee /etc/resolv.conf
-sudo chattr +i /etc/resolv.conf
-sudo systemctl start systemd-resolved
-sudo systemctl enable systemd-resolved
 cat> /root/.profile << END
 if [ "$BASH" ]; then
 if [ -f ~/.bashrc ]; then
