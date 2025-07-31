@@ -704,69 +704,104 @@ systemctl restart noobzvpns
 clear
 }
 
-#res11() {
-#wget https://raw.githubusercontent.com/awanklod/os/main/install/ins-trgo.sh && chmod +x ins-trgo.sh && ./ins-trgo.sh
-#clear
-#}
-
-#res12() {
-#wget -q -O /etc/crontab "https://raw.githubusercontent.com/awanklod/os/main/install/crontab" && chmod 644 /etc/crontab
-#clear
-#}
-
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}  PROCESS INSTALLED SSH & OVVPN         ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+if [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "ubuntu" ]]; then
+echo -e "${green}Setup nginx For OS Is $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')${NC}"
+setup_ubuntu
+elif [[ $(cat /etc/os-release | grep -w ID | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/ID//g') == "debian" ]]; then
+echo -e "${green}Setup nginx For OS Is $(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')${NC}"
+setup_debian
+else
+echo -e " Your OS Is Not Supported ( ${YELLOW}$(cat /etc/os-release | grep -w PRETTY_NAME | head -n1 | sed 's/=//g' | sed 's/"//g' | sed 's/PRETTY_NAME//g')${FONT} )"
+fi
+}
+function setup_debian(){
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│      PROCESS INSTALLED SSH & OPENVPN     │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res2'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}       PROCESS INSTALLED XRAY           ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           PROCESS INSTALLED XRAY         │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res3'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}      PROCESS INSTALLED WEBSOCKET SSH   ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│       PROCESS INSTALLED WEBSOCKET SSH    │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res4'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}      PROCESS INSTALLED BACKUP MENU     ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│       PROCESS INSTALLED BACKUP MENU      │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res5'
 
-#echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-#echo -e "${BIBlue}│ ${BGCOLOR}          PROCESS INSTALLED OHP         ${NC}${BIBlue} │${NC}"
-#echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-#fun_bar 'res6'
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           PROCESS INSTALLED OHP          │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+fun_bar 'res6'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}          DOWNLOAD EXTRA MENU           ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD EXTRA MENU            │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res7'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}           DOWNLOAD SLOW DNS            ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD SYSTEM                │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res8'
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}          DOWNLOAD UDP COSTUM           ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD UDP COSTUM            │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
 fun_bar 'res9'
+}
+function setup_ubuntu(){
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│      PROCESS INSTALLED SSH & OPENVPN     │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res2
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED NOOBZVPNS         ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-fun_bar 'res10'
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           PROCESS INSTALLED XRAY         │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res3
 
-echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED TOJAN-GO        ${NC}${BIBlue} │${NC}"
-echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-fun_bar 'res11'
-#echo -e "${BIBlue}╭══════════════════════════════════════════╮${NC}"
-#echo -e "${BIBlue}│ ${BGCOLOR}    PROCESS INSTALLED CRONTAB         ${NC}${BIBlue} │${NC}"
-#echo -e "${BIBlue}╰══════════════════════════════════════════╯${NC}"
-#fun_bar 'res12'
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│       PROCESS INSTALLED WEBSOCKET SSH    │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res4
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│       PROCESS INSTALLED BACKUP MENU      │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res5
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           PROCESS INSTALLED OHP          │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res6
+
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD EXTRA MENU            │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res7
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD SYSTEM                │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res8
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD UDP COSTUM            │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res9
+
+echo -e "${green}┌──────────────────────────────────────────┐${NC}"
+echo -e "${green}│           DOWNLOAD noobzvpns             │${NC}"
+echo -e "${green}└──────────────────────────────────────────┘${NC}"
+res10
 }
 
 function iinfo(){
@@ -805,6 +840,40 @@ TEXT="
 curl -s --max-time $TIMES -d "chat_id=$CHATID&disable_web_page_preview=1&text=$TEXT&parse_mode=html" $URL >/dev/null
 clear
 }
+# Tentukan nilai baru yang diinginkan untuk fs.file-max
+NEW_FILE_MAX=65535  # Ubah sesuai kebutuhan Anda
+
+# Nilai tambahan untuk konfigurasi netfilter
+NF_CONNTRACK_MAX="net.netfilter.nf_conntrack_max=262144"
+NF_CONNTRACK_TIMEOUT="net.netfilter.nf_conntrack_tcp_timeout_time_wait=30"
+
+# File yang akan diedit
+SYSCTL_CONF="/etc/sysctl.conf"
+
+# Ambil nilai fs.file-max saat ini
+CURRENT_FILE_MAX=$(grep "^fs.file-max" "$SYSCTL_CONF" | awk '{print $3}' 2>/dev/null)
+
+# Cek apakah nilai fs.file-max sudah sesuai
+if [ "$CURRENT_FILE_MAX" != "$NEW_FILE_MAX" ]; then
+    # Cek apakah fs.file-max sudah ada di file
+    if grep -q "^fs.file-max" "$SYSCTL_CONF"; then
+        # Jika ada, ubah nilainya
+        sed -i "s/^fs.file-max.*/fs.file-max = $NEW_FILE_MAX/" "$SYSCTL_CONF" >/dev/null 2>&1
+    else
+        # Jika tidak ada, tambahkan baris baru
+        echo "fs.file-max = $NEW_FILE_MAX" >> "$SYSCTL_CONF" 2>/dev/null
+    fi
+fi
+
+# Cek apakah net.netfilter.nf_conntrack_max sudah ada
+if ! grep -q "^net.netfilter.nf_conntrack_max" "$SYSCTL_CONF"; then
+    echo "$NF_CONNTRACK_MAX" >> "$SYSCTL_CONF" 2>/dev/null
+fi
+
+# Cek apakah net.netfilter.nf_conntrack_tcp_timeout_time_wait sudah ada
+if ! grep -q "^net.netfilter.nf_conntrack_tcp_timeout_time_wait" "$SYSCTL_CONF"; then
+    echo "$NF_CONNTRACK_TIMEOUT" >> "$SYSCTL_CONF" 2>/dev/null
+fi
 #install remove log
 #echo "0 5 * * * root reboot" >> /etc/crontab
 #echo "* * * * * root clog" >> /etc/crontab
