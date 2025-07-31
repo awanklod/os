@@ -4,12 +4,12 @@
 # Skrip Otomatisasi DNS Cloudflare
 #
 # Deskripsi:
-# Skrip ini secara otomatis membuat subdomain acak untuk domain utama,
-# mengarahkan subdomain tersebut (A record) ke IP publik server,
-# dan membuat subdomain nameserver (NS record) yang menunjuk ke
-# subdomain utama menggunakan API Cloudflare.
+# Skrip ini membaca subdomain dari file, lalu membuat atau memperbarui
+# A record untuk subdomain tersebut agar menunjuk ke IP publik server
+# menggunakan API Cloudflare.
 #
 # Prasyarat:
+# - File /root/subdomainx harus ada dan berisi nama subdomain.
 # - jq dan curl harus terinstal.
 # - Kredensial Cloudflare (Email dan Global API Key) harus valid.
 # =================================================================
@@ -21,27 +21,11 @@ CF_KEY="266a89fba5c8824b989d663b382ba84f06d17"
 # Ganti dengan domain utama Anda yang terdaftar di Cloudflare
 DOMAIN="hahah.fun"
 
+# --- Opsi Skrip ---
+# Keluar dari skrip jika ada perintah yang gagal
+set -euo pipefail
+
 # --- Fungsi-Fungsi ---
-
-# Fungsi untuk membersihkan dan menyiapkan direktori yang dibutuhkan
-prepare_directories() {
-    echo "Menyiapkan direktori..."
-    rm -rf /root/xray/scdomain
-    mkdir -p /root/xray
-    clear
-}
-
-# Fungsi untuk menghasilkan subdomain acak
-generate_random_subdomains() {
-    echo "Membuat subdomain acak..."
-    local sub=$(</dev/urandom tr -dc a-z0-9 | head -c5)
-    local subsl=$(</dev/urandom tr -dc a-z0-9 | head -c5)
-    
-    SUB_DOMAIN="${sub}.${DOMAIN}"
-    NS_DOMAIN="${subsl}.ns.${DOMAIN}"
-    echo "Subdomain yang dibuat: ${SUB_DOMAIN}"
-    echo "NS Domain yang dibuat: ${NS_DOMAIN}"
-}
 
 # Fungsi untuk mendapatkan alamat IP publik server
 get_public_ip() {
@@ -62,14 +46,14 @@ get_cloudflare_zone_id() {
         -H "X-Auth-Key: ${CF_KEY}" \
         -H "Content-Type: application/json" | jq -r .result[0].id)
 
-    if [[ -z "$ZONE" ]]; then
+    if [[ -z "$ZONE" || "$ZONE" == "null" ]]; then
         echo "Gagal mendapatkan Zone ID Cloudflare. Pastikan domain dan kredensial benar. Keluar..."
         exit 1
     fi
     echo "Zone ID ditemukan: ${ZONE}"
 }
 
-# Fungsi untuk membuat atau memperbarui DNS record (A atau NS)
+# Fungsi untuk membuat atau memperbarui DNS record
 update_or_create_record() {
     local record_type=$1
     local name=$2
@@ -104,16 +88,17 @@ update_or_create_record() {
 
 # Fungsi untuk menyimpan konfigurasi domain ke dalam file
 save_configuration() {
+    local domain_name=$1
     echo "Menyimpan konfigurasi..."
-    echo "IP=${SUB_DOMAIN}" > /var/lib/ipvps.conf
-    echo "${SUB_DOMAIN}" > /root/domain
-    echo "${NS_DOMAIN}" > /root/dns
     
-    # Pastikan direktori /etc/xray ada
+    # Pastikan direktori tujuan ada
     mkdir -p /etc/xray
-    
-    echo "${SUB_DOMAIN}" > /etc/xray/domain
-    echo "${NS_DOMAIN}" > /etc/xray/dns
+    mkdir -p /etc/v2ray
+
+    echo "${domain_name}" > /root/domain
+    echo "${domain_name}" > /etc/xray/domain
+    echo "${domain_name}" > /etc/v2ray/domain
+    echo "IP=${domain_name}" > /var/lib/ipvps.conf
     echo "Konfigurasi berhasil disimpan."
 }
 
@@ -131,24 +116,32 @@ main() {
         apt-get update && apt-get install -y jq curl
     fi
 
-    prepare_directories
-    generate_random_subdomains
+    # Baca subdomain dari file
+    if [[ ! -f /root/subdomainx ]]; then
+        echo "File /root/subdomainx tidak ditemukan. Keluar..."
+        exit 1
+    fi
+    local sub=$(cat /root/subdomainx)
+    if [[ -z "$sub" ]]; then
+        echo "File /root/subdomainx kosong. Keluar..."
+        exit 1
+    fi
+    
+    local SUB_DOMAIN="${sub}.${DOMAIN}"
+    echo "Subdomain yang akan diproses: ${SUB_DOMAIN}"
+
     get_public_ip
     get_cloudflare_zone_id
 
-    # Buat atau perbarui A record untuk subdomain utama
+    # Buat atau perbarui A record untuk subdomain
     update_or_create_record "A" "${SUB_DOMAIN}" "${IP}"
 
-    # Buat atau perbarui NS record untuk subdomain nameserver
-    update_or_create_record "NS" "${NS_DOMAIN}" "${SUB_DOMAIN}"
-
-    save_configuration
+    save_configuration "${SUB_DOMAIN}"
 
     echo "=========================================="
     echo "      Proses Konfigurasi Selesai"
     echo "=========================================="
     echo "Host      : ${SUB_DOMAIN}"
-    echo "Host NS   : ${NS_DOMAIN}"
     echo "IP Server : ${IP}"
     echo "=========================================="
     
@@ -158,4 +151,3 @@ main() {
 
 # Eksekusi fungsi utama
 main
-
