@@ -327,7 +327,7 @@ wget ${REPO}install/udp-custom.sh && chmod +x udp-custom.sh && bash udp-custom.s
 clear
 }
 res10() {
-wget https://raw.githubusercontent.com/sehuadri/new/main/noobz/noobzvpns.zip
+wget https://raw.githubusercontent.com/awanklod/os/main/noobz/noobzvpns.zip
 unzip noobzvpns.zip
 chmod +x noobzvpns/*
 cd noobzvpns
