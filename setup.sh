@@ -851,7 +851,7 @@ clear
 #clear
 CEKIP
 Casper3
-#cat> /root/.profile << END
+cat> /root/.profile << END
 if [ "$BASH" ]; then
 if [ -f ~/.bashrc ]; then
 . ~/.bashrc
