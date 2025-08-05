@@ -22,7 +22,7 @@ if ! command -v 7z &> /dev/null; then
     apt install p7zip-full -y &> /dev/null &
     loading $! "Loading Install p7zip-full"
 fi
-CHATID="1486508882" 
+CHATID="1486508882"
 KEY="7286072978:AAF6JRoH86zg5UAQeHKrpIviAICDc-vJxDU"
 TIME="10"
 URL="https://api.telegram.org/bot$KEY/sendMessage"
@@ -75,17 +75,8 @@ fi
 
 echo -e " [INFO] Downloading menu.zip..."
 {
-> /etc/cron.d/cpu_otm
-
-cat> /etc/cron.d/cpu_xwan << END
-SHELL=/bin/sh
-PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-*/5 * * * * root /usr/bin/autocpu
-END
-
-wget -O /usr/bin/autocpu "${REPO}install/autocpu.sh" && chmod +x /usr/bin/autocpu
     wget -q ${REPO}menu/menu.zip
-	mv menu/expsc /usr/local/sbin/expsc
+    mv menu/expsc /usr/local/sbin/expsc
     wget -q -O /usr/bin/enc "${REPO}install/encrypt"
     chmod +x /usr/bin/enc
     7z x -p$pwadm menu.zip &> /dev/null #pastikan file menu.zip memiliki password yang sama
@@ -106,10 +97,10 @@ echo $serverV > /opt/.ver
 rm /root/*.sh*
 # Pesan akhir
 TEXT="◇━━━━━━━━━━━━━━◇
-<b>   ⚠️NOTIF UPDATE SCRIPT⚠️</b>
-<b>     Update Script Sukses</b>
+<b>  ⚠️NOTIF UPDATE SCRIPT⚠️</b>
+<b>   Update Script Sukses</b>
 ◇━━━━━━━━━━━━━━◇
-<b>IP VPS  :</b> ${MYIP} 
+<b>IP VPS  :</b> ${MYIP}
 <b>DOMAIN  :</b> ${domain}
 <b>Version :</b> ${serverV}
 <b>USER    :</b> ${username}
